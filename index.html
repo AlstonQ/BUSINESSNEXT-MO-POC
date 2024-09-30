@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .highlight {
+            background-color: #e6f7ff;
+        }
+        .graph {
+            margin-top: 20px;
+        }
+        #rmMetrics {
+            display: none;
+        }
+        .clickable {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+        .clickable:hover {
+            text-decoration: none;
+        }
+        #backButton {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+            display: none;
+        }
+        #backButton:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <button id="backButton" onclick="showTeamPerformance()">Back to Team Performance</button>
+
+    <div id="teamPerformance">
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>Q1</th>
+                <th>Q2</th>
+                <th>Q3</th>
+                <th>Q4</th>
+                <th>YTD</th>
+            </tr>
+            <tr>
+                <td>No. of RMs</td>
+                <td class="clickable" onclick="showRMMetrics('Q1')">5</td>
+                <td class="clickable" onclick="showRMMetrics('Q2')">5</td>
+                <td class="clickable" onclick="showRMMetrics('Q3')">5</td>
+                <td class="clickable" onclick="showRMMetrics('Q4')">5</td>
+                <td class="clickable" onclick="showRMMetrics('YTD')">5</td>
+            </tr>
+            <tr>
+                <td>Avg. Points Earned</td>
+                <td>450</td>
+                <td>520</td>
+                <td>580</td>
+                <td>610</td>
+                <td>540</td>
+            </tr>
+            <tr>
+                <td>Avg. Knowledge Score</td>
+                <td>78%</td>
+                <td>82%</td>
+                <td>85%</td>
+                <td>88%</td>
+                <td>83%</td>
+            </tr>
+            <tr>
+                <td>Avg. Productivity</td>
+                <td>85%</td>
+                <td>88%</td>
+                <td>92%</td>
+                <td>95%</td>
+                <td>90%</td>
+            </tr>
+            <tr>
+                <td>No. of RMs Qualified</td>
+                <td>3</td>
+                <td>4</td>
+                <td>4</td>
+                <td>5</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>Incentive Accrued</td>
+                <td>₹18,75,000</td>
+                <td>₹26,25,000</td>
+                <td>₹33,75,000</td>
+                <td>₹41,25,000</td>
+                <td>₹1,20,00,000</td>
+            </tr>
+            <tr>
+                <td>Incentive Payable</td>
+                <td>₹16,87,500</td>
+                <td>₹23,62,500</td>
+                <td>₹30,37,500</td>
+                <td>₹37,12,500</td>
+                <td>₹1,08,00,000</td>
+            </tr>
+            <tr>
+                <td>Incentive Paid (70%)</td>
+                <td>₹11,81,250</td>
+                <td>₹16,53,750</td>
+                <td>₹21,26,250</td>
+                <td>₹25,98,750</td>
+                <td>₹75,60,000</td>
+            </tr>
+            <tr>
+                <td>Incentive Reserved (30%)</td>
+                <td>₹5,06,250</td>
+                <td>₹7,08,750</td>
+                <td>₹9,11,250</td>
+                <td>₹11,13,750</td>
+                <td>₹32,40,000</td>
+            </tr>
+        </table>
+
+        <h2>Team Incentives Metrics</h2>
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>Q1</th>
+                <th>Q2</th>
+                <th>Q3</th>
+                <th>Q4</th>
+                <th>YTD</th>
+            </tr>
+            <tr>
+                <td>Gross Margin Points</td>
+                <td>2,250</td>
+                <td>2,600</td>
+                <td>2,900</td>
+                <td>3,050</td>
+                <td>10,800</td>
+            </tr>
+            <tr>
+                <td>Net Margin Points</td>
+                <td>2,025</td>
+                <td>2,340</td>
+                <td>2,610</td>
+                <td>2,745</td>
+                <td>9,720</td>
+            </tr>
+            <tr>
+                <td>Productivity Slab</td>
+                <td>Slab 2</td>
+                <td>Slab 3</td>
+                <td>Slab 3</td>
+                <td>Slab 4</td>
+                <td>Slab 3</td>
+            </tr>
+            <tr>
+                <td>New A/cs Incentive</td>
+                <td>₹3,75,000</td>
+                <td>₹5,25,000</td>
+                <td>₹6,75,000</td>
+                <td>₹8,25,000</td>
+                <td>₹24,00,000</td>
+            </tr>
+            <tr>
+                <td>Incremental Margin Points Required</td>
+                <td>250</td>
+                <td>400</td>
+                <td>100</td>
+                <td>450</td>
+                <td>1,200</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="rmMetrics">
+        <h2>RM Incentive Qualification Metrics - <span id="quarterDisplay"></span></h2>
+        <table>
+            <tr>
+                <th>RM Emp Code</th>
+                <th>RM Name</th>
+                <th>Eligible A/cs Acquired</th>
+                <th>New A/c Points</th>
+                <th>New A/c Points Required</th>
+                <th>Traded A/cs (Product Level)</th>
+                <th>Traded A/cs Required</th>
+            </tr>
+            <tr>
+                <td>RM001</td>
+                <td>John Doe</td>
+                <td>15</td>
+                <td class="highlight">450</td>
+                <td>400</td>
+                <td class="highlight">22</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>RM002</td>
+                <td>Jane Smith</td>
+                <td>12</td>
+                <td>360</td>
+                <td class="highlight">400</td>
+                <td class="highlight">25</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>RM003</td>
+                <td>Bob Johnson</td>
+                <td>18</td>
+                <td class="highlight">540</td>
+                <td>400</td>
+                <td class="highlight">28</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>RM004</td>
+                <td>Alice Brown</td>
+                <td>10</td>
+                <td>300</td>
+                <td class="highlight">400</td>
+                <td>18</td>
+                <td class="highlight">20</td>
+            </tr>
+            <tr>
+                <td>RM005</td>
+                <td>Charlie Wilson</td>
+                <td>14</td>
+                <td class="highlight">420</td>
+                <td>400</td>
+                <td class="highlight">23</td>
+                <td>20</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function showRMMetrics(quarter) {
+            document.getElementById("teamPerformance").style.display = "none";
+            document.getElementById("rmMetrics").style.display = "block";
+            document.getElementById("backButton").style.display = "block";
+            document.getElementById("quarterDisplay").textContent = quarter;
+        }
+
+        function showTeamPerformance() {
+            document.getElementById("teamPerformance").style.display = "block";
+            document.getElementById("rmMetrics").style.display = "none";
+            document.getElementById("backButton").style.display = "none";
+        }
+    </script>
+</body>
+</html>
