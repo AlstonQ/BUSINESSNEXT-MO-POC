@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Performance Report</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: right;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+        tr:hover {
+            background-color: #f0f0f0;
+        }
+        .name-column {
+            text-align: left;
+            font-weight: bold;
+            position: sticky;
+            left: 0;
+            background-color: inherit;
+            z-index: 1;
+        }
+        .total-row {
+            font-weight: bold;
+            background-color: #e6f3e6 !important;
+        }
+        .total-row td {
+            border-top: 2px solid #4CAF50;
+        }
+        @media screen and (max-width: 600px) {
+            th, td {
+                padding: 8px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Employee Performance Report</h1>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Role</th>
+                        <th>Accounts >= 1L</th>
+                        <th>Accounts >= 50K <= 1L</th>
+                        <th>Net Accounts</th>
+                        <th>Weighted Margin</th>
+                        <th>T+5 IAP (In Lakhs)</th>
+                        <th>IP (In Lakhs)</th>
+                        <th>Insurance Issued (In Lakhs)</th>
+                        <th>TGS/EDUMO IDs</th>
+                        <th>SIP Logged (Eligible)</th>
+                        <th>SIP Active (Eligible)</th>
+                        <th>Other Revenue (In Lakhs)</th>
+                        <th>12 Month Broking Revenue (In Lakhs)</th>
+                        <th>Blended Revenue (In Lakhs)</th>
+                        <th>Other PX</th>
+                        <th>12 Month Broking PX</th>
+                        <th>Blended PX</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="name-column">Mr. Sandeep Mishra</td>
+                        <td>Self</td>
+                        <td>5</td>
+                        <td>12</td>
+                        <td>17</td>
+                        <td>3.5</td>
+                        <td>5</td>
+                        <td>4.8</td>
+                        <td>2.5</td>
+                        <td>1</td>
+                        <td>5</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>3.8</td>
+                        <td>14.3</td>
+                        <td>60</td>
+                        <td>55</td>
+                        <td>115</td>
+                    </tr>
+                    <tr>
+                        <td class="name-column">Mr. Swapnil Jain</td>
+                        <td>Sales Manager</td>
+                        <td>10</td>
+                        <td>25</td>
+                        <td>35</td>
+                        <td>6.5</td>
+                        <td>10.5</td>
+                        <td>9.2</td>
+                        <td>5</td>
+                        <td>2</td>
+                        <td>10</td>
+                        <td>8</td>
+                        <td>6</td>
+                        <td>7.8</td>
+                        <td>30.5</td>
+                        <td>75</td>
+                        <td>70</td>
+                        <td>145</td>
+                    </tr>
+                    <tr>
+                        <td class="name-column">Mr. Harshit Singh</td>
+                        <td>Relationship Manager</td>
+                        <td>15</td>
+                        <td>30</td>
+                        <td>45</td>
+                        <td>8.5</td>
+                        <td>12.5</td>
+                        <td>10</td>
+                        <td>6</td>
+                        <td>3</td>
+                        <td>12</td>
+                        <td>10</td>
+                        <td>5.5</td>
+                        <td>8.5</td>
+                        <td>32.5</td>
+                        <td>85</td>
+                        <td>75</td>
+                        <td>160</td>
+                    </tr>
+                    <tr>
+                        <td class="name-column">Mr. Mehul Jain</td>
+                        <td>Relationship Manager</td>
+                        <td>20</td>
+                        <td>35</td>
+                        <td>55</td>
+                        <td>12</td>
+                        <td>15</td>
+                        <td>13.2</td>
+                        <td>7.5</td>
+                        <td>4</td>
+                        <td>15</td>
+                        <td>12</td>
+                        <td>7</td>
+                        <td>10</td>
+                        <td>40</td>
+                        <td>90</td>
+                        <td>82</td>
+                        <td>172</td>
+                    </tr>
+                    <tr>
+                        <td class="name-column">Mr. Sachin Agrawal</td>
+                        <td>Relationship Manager</td>
+                        <td>10</td>
+                        <td>25</td>
+                        <td>35</td>
+                        <td>6.5</td>
+                        <td>8</td>
+                        <td>6.5</td>
+                        <td>3.2</td>
+                        <td>2</td>
+                        <td>8</td>
+                        <td>6</td>
+                        <td>3.8</td>
+                        <td>5.5</td>
+                        <td>21</td>
+                        <td>65</td>
+                        <td>58</td>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td class="name-column">Mr. Ankit Garg</td>
+                        <td>Relationship Manager</td>
+                        <td>12</td>
+                        <td>28</td>
+                        <td>40</td>
+                        <td>7.8</td>
+                        <td>10.2</td>
+                        <td>8</td>
+                        <td>4.5</td>
+                        <td>3</td>
+                        <td>10</td>
+                        <td>8</td>
+                        <td>4.2</td>
+                        <td>6.8</td>
+                        <td>26.5</td>
+                        <td>70</td>
+                        <td>62</td>
+                        <td>132</td>
+                    </tr>
+                    <tr>
+                        <td class="name-column">Mr. Viren Gaikwad</td>
+                        <td>Relationship Manager</td>
+                        <td>18</td>
+                        <td>33</td>
+                        <td>51</td>
+                        <td>10.2</td>
+                        <td>11.8</td>
+                        <td>9.5</td>
+                        <td>5.8</td>
+                        <td>3</td>
+                        <td>14</td>
+                        <td>11</td>
+                        <td>5</td>
+                        <td>9.2</td>
+                        <td>34.8</td>
+                        <td>88</td>
+                        <td>79</td>
+                        <td>167</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td class="name-column">Total</td>
+                        <td>-</td>
+                        <td>90</td>
+                        <td>188</td>
+                        <td>278</td>
+                        <td>55</td>
+                        <td>73</td>
+                        <td>61.2</td>
+                        <td>34.5</td>
+                        <td>18</td>
+                        <td>74</td>
+                        <td>59</td>
+                        <td>34.5</td>
+                        <td>51.6</td>
+                        <td>199.6</td>
+                        <td>533</td>
+                        <td>481</td>
+                        <td>1014</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
