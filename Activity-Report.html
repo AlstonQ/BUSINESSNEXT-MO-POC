@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Productivity Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: right;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+        tr:hover {
+            background-color: #f0f0f0;
+        }
+        .text-left {
+            text-align: left;
+        }
+        @media screen and (max-width: 600px) {
+            th, td {
+                padding: 8px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Meeting Productivity Dashboard</h1>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="text-left sticky-col">Zone</th>
+                        <th class="text-left sticky-col">Branch Name</th>
+                        <th class="text-left sticky-col">Employee Code</th>
+                        <th class="text-left sticky-col">Employee Name</th>
+                        <th class="text-left">Profile</th>
+                        <th>No. of Present Days</th>
+                        <th>Target</th>
+                        <th>Personal Meetings</th>
+                        <th>Video Conf. Meetings</th>
+                        <th>Total Meetings</th>
+                        <th>New Clients</th>
+                        <th>Existing Clients</th>
+                        <th>% Target Achieved</th>
+                        <th>Avg. Meetings per Day</th>
+                        <th>Unique Meetings</th>
+                        <th>% of Unique Meetings</th>
+                        <th>Margin</th>
+                        <th>% No. of Clients Activated</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-left sticky-col">North</td>
+                        <td class="text-left sticky-col">Delhi Central</td>
+                        <td class="text-left sticky-col">EMP001</td>
+                        <td class="text-left sticky-col">Rahul Sharma</td>
+                        <td class="text-left">Senior Manager</td>
+                        <td>22</td>
+                        <td>100</td>
+                        <td>65</td>
+                        <td>25</td>
+                        <td>90</td>
+                        <td>30</td>
+                        <td>60</td>
+                        <td>90%</td>
+                        <td>4.09</td>
+                        <td>75</td>
+                        <td>83.33%</td>
+                        <td>₹150,000</td>
+                        <td>75%</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left sticky-col">South</td>
+                        <td class="text-left sticky-col">Bangalore East</td>
+                        <td class="text-left sticky-col">EMP002</td>
+                        <td class="text-left sticky-col">Priya Patel</td>
+                        <td class="text-left">Manager</td>
+                        <td>21</td>
+                        <td>90</td>
+                        <td>55</td>
+                        <td>30</td>
+                        <td>85</td>
+                        <td>25</td>
+                        <td>60</td>
+                        <td>94.44%</td>
+                        <td>4.05</td>
+                        <td>70</td>
+                        <td>82.35%</td>
+                        <td>₹130,000</td>
+                        <td>70%</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left sticky-col">West</td>
+                        <td class="text-left sticky-col">Mumbai Central</td>
+                        <td class="text-left sticky-col">EMP003</td>
+                        <td class="text-left sticky-col">Amit Desai</td>
+                        <td class="text-left">Assistant Manager</td>
+                        <td>20</td>
+                        <td>80</td>
+                        <td>50</td>
+                        <td>20</td>
+                        <td>70</td>
+                        <td>20</td>
+                        <td>50</td>
+                        <td>87.50%</td>
+                        <td>3.50</td>
+                        <td>60</td>
+                        <td>85.71%</td>
+                        <td>₹110,000</td>
+                        <td>65%</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left sticky-col">East</td>
+                        <td class="text-left sticky-col">Kolkata North</td>
+                        <td class="text-left sticky-col">EMP004</td>
+                        <td class="text-left sticky-col">Suman Roy</td>
+                        <td class="text-left">Senior Executive</td>
+                        <td>23</td>
+                        <td>70</td>
+                        <td>45</td>
+                        <td>35</td>
+                        <td>80</td>
+                        <td>15</td>
+                        <td>65</td>
+                        <td>114.29%</td>
+                        <td>3.48</td>
+                        <td>65</td>
+                        <td>81.25%</td>
+                        <td>₹95,000</td>
+                        <td>60%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
