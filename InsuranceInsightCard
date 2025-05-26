@@ -35,15 +35,15 @@
         }
 
         .card.opportunity {
-            background: linear-gradient(135deg, #e8f5e8 0%, #d4f4d4 100%);
+            background: linear-gradient(135deg, #E1F6F8 0%, #c8f1f5 100%);
         }
 
         .card.risk {
-            background: linear-gradient(135deg, #fce8e8 0%, #f8d7d7 100%);
+            background: linear-gradient(135deg, #F4E6E4 0%, #f0d7d4 100%);
         }
 
         .card.recommendation {
-            background: linear-gradient(135deg, #fff8e1 0%, #ffe9b3 100%);
+            background: linear-gradient(135deg, #E1F6F8 0%, #c8f1f5 100%);
         }
 
         .card-header {
@@ -55,15 +55,15 @@
         }
 
         .opportunity .card-header {
-            color: #4a8b4a;
+            color: #0A52A0;
         }
 
         .risk .card-header {
-            color: #d32f2f;
+            color: #D40C7C;
         }
 
         .recommendation .card-header {
-            color: #f57c00;
+            color: #0A52A0;
         }
 
         .card-title {
@@ -102,30 +102,30 @@
         }
 
         .opportunity .card-action {
-            background-color: #4a8b4a;
+            background-color: #0A52A0;
             color: white;
         }
 
         .opportunity .card-action:hover {
-            background-color: #3d7a3d;
+            background-color: #084590;
         }
 
         .risk .card-action {
-            background-color: #d32f2f;
+            background-color: #D40C7C;
             color: white;
         }
 
         .risk .card-action:hover {
-            background-color: #b71c1c;
+            background-color: #b8096c;
         }
 
         .recommendation .card-action {
-            background-color: #f57c00;
+            background-color: #0A52A0;
             color: white;
         }
 
         .recommendation .card-action:hover {
-            background-color: #e65100;
+            background-color: #084590;
         }
 
         @media (max-width: 768px) {
@@ -146,10 +146,10 @@
             <div class="card-header">Opportunity</div>
             <div class="card-title">Life Insurance Eligibility</div>
             <div class="card-description">
-                Kelly may qualify for preferred rates on term life insurance based on her age and health profile. New family status indicates coverage need.
+                Sophia may qualify for preferred rates on term life insurance based on her age and health profile. New family status indicates coverage need.
             </div>
             <div class="card-for">
-                For: <strong>Kelly Johnson</strong>
+                For: <strong>Sophia Chang</strong>
             </div>
             <button class="card-action" onclick="createLead()">Create Lead</button>
         </div>
@@ -162,7 +162,7 @@
                 Current auto insurance limits may be insufficient for high-value assets. Umbrella policy recommended for liability protection.
             </div>
             <div class="card-for">
-                For: <strong>Tom Johnson</strong>
+                For: <strong>Adrina Chang</strong>
             </div>
             <button class="card-action" onclick="scheduleConsultation()">Schedule Consultation</button>
         </div>
@@ -175,7 +175,7 @@
                 Client has multiple policies with different carriers. Bundling home and auto could save 15-25% on premiums annually.
             </div>
             <div class="card-for">
-                For: <strong>Tom Johnson</strong>
+                For: <strong>Jenny Chang</strong>
             </div>
             <button class="card-action" onclick="sendEmail()">Send Email</button>
         </div>
@@ -183,17 +183,17 @@
 
     <script>
         function createLead() {
-            alert('Creating life insurance lead for Kelly Johnson...');
+            alert('Creating life insurance lead for Sophia Chang...');
             // Add your insurance lead creation logic here
         }
 
         function scheduleConsultation() {
-            alert('Scheduling insurance review consultation for Tom Johnson...');
+            alert('Scheduling insurance review consultation for Adrina Chang...');
             // Add your consultation scheduling logic here
         }
 
         function sendEmail() {
-            alert('Sending policy bundling proposal to Tom Johnson...');
+            alert('Sending policy bundling proposal to Jenny Chang...');
             // Add your email sending logic here
         }
     </script>
