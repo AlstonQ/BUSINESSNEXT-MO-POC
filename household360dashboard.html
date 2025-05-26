@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Household Insurance Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+
+        .summary-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .summary-card.life { border-left-color: #e74c3c; }
+        .summary-card.home { border-left-color: #3498db; }
+        .summary-card.auto { border-left-color: #f39c12; }
+        .summary-card.health { border-left-color: #2ecc71; }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.5em;
+            color: white;
+        }
+
+        .life .card-icon { background: #e74c3c; }
+        .home .card-icon { background: #3498db; }
+        .auto .card-icon { background: #f39c12; }
+        .health .card-icon { background: #2ecc71; }
+
+        .card-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .card-subtitle {
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        .card-amount {
+            font-size: 2em;
+            font-weight: 300;
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+
+        .card-policies {
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            background: white;
+            padding: 20px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .nav-item {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-item.active {
+            background: #3498db;
+            color: white;
+        }
+
+        .nav-item:not(.active) {
+            color: #7f8c8d;
+        }
+
+        .nav-item:hover:not(.active) {
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            padding: 30px;
+        }
+
+        .policy-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid #ecf0f1;
+            transition: all 0.3s ease;
+        }
+
+        .policy-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .policy-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .policy-type {
+            display: flex;
+            align-items: center;
+        }
+
+        .policy-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .policy-info h3 {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .policy-info p {
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        .policy-number {
+            font-size: 0.8em;
+            color: #95a5a6;
+            background: #f8f9fa;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .policy-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            text-align: center;
+        }
+
+        .detail-label {
+            font-size: 0.8em;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-value {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .premium-positive { color: #27ae60; }
+        .premium-negative { color: #e74c3c; }
+
+        .policy-owner {
+            display: flex;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #ecf0f1;
+        }
+
+        .owner-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .owner-info {
+            flex: 1;
+        }
+
+        .owner-name {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.9em;
+        }
+
+        .owner-relation {
+            font-size: 0.8em;
+            color: #7f8c8d;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        @media (max-width: 768px) {
+            .summary-cards {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .policy-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .navigation {
+                flex-wrap: wrap;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🍁 Household Insurance Portfolio</h1>
+            <p>Comprehensive coverage for the Chang family</p>
+        </div>
+
+        <div class="summary-cards">
+            <div class="summary-card life">
+                <div class="card-header">
+                    <div class="card-icon">👥</div>
+                    <div>
+                        <div class="card-title">Life Insurance</div>
+                        <div class="card-subtitle">2 policies</div>
+                    </div>
+                </div>
+                <div class="card-amount">$850,000</div>
+                <div class="card-policies">Total Coverage</div>
+            </div>
+
+            <div class="summary-card home">
+                <div class="card-header">
+                    <div class="card-icon">🏠</div>
+                    <div>
+                        <div class="card-title">Home Insurance</div>
+                        <div class="card-subtitle">2 properties</div>
+                    </div>
+                </div>
+                <div class="card-amount">$1,250,000</div>
+                <div class="card-policies">Total Coverage</div>
+            </div>
+
+            <div class="summary-card auto">
+                <div class="card-header">
+                    <div class="card-icon">🚗</div>
+                    <div>
+                        <div class="card-title">Auto Insurance</div>
+                        <div class="card-subtitle">3 vehicles</div>
+                    </div>
+                </div>
+                <div class="card-amount">$75,000</div>
+                <div class="card-policies">Total Coverage</div>
+            </div>
+
+            <div class="summary-card health">
+                <div class="card-header">
+                    <div class="card-icon">⚕️</div>
+                    <div>
+                        <div class="card-title">Health Insurance</div>
+                        <div class="card-subtitle">1 family plan</div>
+                    </div>
+                </div>
+                <div class="card-amount">$500,000</div>
+                <div class="card-policies">Total Coverage</div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <div class="nav-item active">All Policies</div>
+            <div class="nav-item">Life</div>
+            <div class="nav-item">Property</div>
+            <div class="nav-item">Auto</div>
+            <div class="nav-item">Health</div>
+        </div>
+
+        <div class="policy-grid">
+            <div class="policy-card">
+                <div class="policy-header">
+                    <div class="policy-type">
+                        <div class="policy-icon" style="background: #e74c3c;">👤</div>
+                        <div class="policy-info">
+                            <h3>Term Life Insurance</h3>
+                            <p>20-Year Term Policy</p>
+                        </div>
+                    </div>
+                    <div class="policy-number">POL-2024-001</div>
+                </div>
+                <div class="policy-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Coverage</div>
+                        <div class="detail-value">$500,000</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Monthly Premium</div>
+                        <div class="detail-value premium-negative">$185.50</div>
+                    </div>
+                </div>
+                <div class="policy-owner">
+                    <div class="owner-avatar">SC</div>
+                    <div class="owner-info">
+                        <div class="owner-name">Sophia Chang</div>
+                        <div class="owner-relation">Primary Insured</div>
+                    </div>
+                    <div class="status-badge status-active">Active</div>
+                </div>
+            </div>
+
+            <div class="policy-card">
+                <div class="policy-header">
+                    <div class="policy-type">
+                        <div class="policy-icon" style="background: #3498db;">🏠</div>
+                        <div class="policy-info">
+                            <h3>Home Insurance</h3>
+                            <p>Primary Residence - Toronto, ON</p>
+                        </div>
+                    </div>
+                    <div class="policy-number">POL-2024-002</div>
+                </div>
+                <div class="policy-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Coverage</div>
+                        <div class="detail-value">$750,000</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Monthly Premium</div>
+                        <div class="detail-value premium-negative">$225.00</div>
+                    </div>
+                </div>
+                <div class="policy-owner">
+                    <div class="owner-avatar">AC</div>
+                    <div class="owner-info">
+                        <div class="owner-name">Andrina Chang</div>
+                        <div class="owner-relation">Joint Owner</div>
+                    </div>
+                    <div class="status-badge status-active">Active</div>
+                </div>
+            </div>
+
+            <div class="policy-card">
+                <div class="policy-header">
+                    <div class="policy-type">
+                        <div class="policy-icon" style="background: #f39c12;">🚗</div>
+                        <div class="policy-info">
+                            <h3>Auto Insurance</h3>
+                            <p>2022 Honda CR-V</p>
+                        </div>
+                    </div>
+                    <div class="policy-number">POL-2024-003</div>
+                </div>
+                <div class="policy-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Coverage</div>
+                        <div class="detail-value">$25,000</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Monthly Premium</div>
+                        <div class="detail-value premium-negative">$145.75</div>
+                    </div>
+                </div>
+                <div class="policy-owner">
+                    <div class="owner-avatar">JC</div>
+                    <div class="owner-info">
+                        <div class="owner-name">Jenny Chang</div>
+                        <div class="owner-relation">Primary Driver</div>
+                    </div>
+                    <div class="status-badge status-active">Active</div>
+                </div>
+            </div>
+
+            <div class="policy-card">
+                <div class="policy-header">
+                    <div class="policy-type">
+                        <div class="policy-icon" style="background: #2ecc71;">⚕️</div>
+                        <div class="policy-info">
+                            <h3>Extended Health</h3>
+                            <p>Family Coverage Plan</p>
+                        </div>
+                    </div>
+                    <div class="policy-number">POL-2024-004</div>
+                </div>
+                <div class="policy-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Coverage</div>
+                        <div class="detail-value">$500,000</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Monthly Premium</div>
+                        <div class="detail-value premium-negative">$325.00</div>
+                    </div>
+                </div>
+                <div class="policy-owner">
+                    <div class="owner-avatar">SC</div>
+                    <div class="owner-info">
+                        <div class="owner-name">Sophia Chang</div>
+                        <div class="owner-relation">Plan Holder</div>
+                    </div>
+                    <div class="status-badge status-active">Active</div>
+                </div>
+            </div>
+
+            <div class="policy-card">
+                <div class="policy-header">
+                    <div class="policy-type">
+                        <div class="policy-icon" style="background: #e74c3c;">👥</div>
+                        <div class="policy-info">
+                            <h3>Whole Life Insurance</h3>
+                            <p>Investment Component</p>
+                        </div>
+                    </div>
+                    <div class="policy-number">POL-2024-005</div>
+                </div>
+                <div class="policy-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Coverage</div>
+                        <div class="detail-value">$350,000</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Monthly Premium</div>
+                        <div class="detail-value premium-negative">$485.25</div>
+                    </div>
+                </div>
+                <div class="policy-owner">
+                    <div class="owner-avatar">AC</div>
+                    <div class="owner-info">
+                        <div class="owner-name">Andrina Chang</div>
+                        <div class="owner-relation">Primary Insured</div>
+                    </div>
+                    <div class="status-badge status-active">Active</div>
+                </div>
+            </div>
+
+            <div class="policy-card">
+                <div class="policy-header">
+                    <div class="policy-type">
+                        <div class="policy-icon" style="background: #3498db;">🏡</div>
+                        <div class="policy-info">
+                            <h3>Condo Insurance</h3>
+                            <p>Investment Property - Vancouver, BC</p>
+                        </div>
+                    </div>
+                    <div class="policy-number">POL-2024-006</div>
+                </div>
+                <div class="policy-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Coverage</div>
+                        <div class="detail-value">$500,000</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Monthly Premium</div>
+                        <div class="detail-value premium-negative">$175.50</div>
+                    </div>
+                </div>
+                <div class="policy-owner">
+                    <div class="owner-avatar">JC</div>
+                    <div class="owner-info">
+                        <div class="owner-name">Jenny Chang</div>
+                        <div class="owner-relation">Owner</div>
+                    </div>
+                    <div class="status-badge status-pending">Renewal Due</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add interactive navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter policies based on selection
+                const filterType = this.textContent.toLowerCase();
+                const policyCards = document.querySelectorAll('.policy-card');
+                
+                policyCards.forEach(card => {
+                    if (filterType === 'all policies') {
+                        card.style.display = 'block';
+                    } else {
+                        const policyTitle = card.querySelector('.policy-info h3').textContent.toLowerCase();
+                        if (policyTitle.includes(filterType) || 
+                            (filterType === 'property' && (policyTitle.includes('home') || policyTitle.includes('condo'))) ||
+                            (filterType === 'life' && policyTitle.includes('life')) ||
+                            (filterType === 'auto' && policyTitle.includes('auto')) ||
+                            (filterType === 'health' && policyTitle.includes('health'))) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.policy-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
