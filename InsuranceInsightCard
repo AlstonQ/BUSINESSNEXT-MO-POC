@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Dashboard Cards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .card.opportunity {
+            background: linear-gradient(135deg, #e8f5e8 0%, #d4f4d4 100%);
+        }
+
+        .card.risk {
+            background: linear-gradient(135deg, #fce8e8 0%, #f8d7d7 100%);
+        }
+
+        .card.recommendation {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffe9b3 100%);
+        }
+
+        .card-header {
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .opportunity .card-header {
+            color: #4a8b4a;
+        }
+
+        .risk .card-header {
+            color: #d32f2f;
+        }
+
+        .recommendation .card-header {
+            color: #f57c00;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .card-for {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .card-for strong {
+            color: #333;
+        }
+
+        .card-action {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .opportunity .card-action {
+            background-color: #4a8b4a;
+            color: white;
+        }
+
+        .opportunity .card-action:hover {
+            background-color: #3d7a3d;
+        }
+
+        .risk .card-action {
+            background-color: #d32f2f;
+            color: white;
+        }
+
+        .risk .card-action:hover {
+            background-color: #b71c1c;
+        }
+
+        .recommendation .card-action {
+            background-color: #f57c00;
+            color: white;
+        }
+
+        .recommendation .card-action:hover {
+            background-color: #e65100;
+        }
+
+        @media (max-width: 768px) {
+            .card-container {
+                flex-direction: column;
+            }
+            
+            .card {
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <!-- Opportunity Card -->
+        <div class="card opportunity">
+            <div class="card-header">Opportunity</div>
+            <div class="card-title">Life Insurance Eligibility</div>
+            <div class="card-description">
+                Kelly may qualify for preferred rates on term life insurance based on her age and health profile. New family status indicates coverage need.
+            </div>
+            <div class="card-for">
+                For: <strong>Kelly Johnson</strong>
+            </div>
+            <button class="card-action" onclick="createLead()">Create Lead</button>
+        </div>
+
+        <!-- Risk Card -->
+        <div class="card risk">
+            <div class="card-header">Risk</div>
+            <div class="card-title">Coverage Gap Identified</div>
+            <div class="card-description">
+                Current auto insurance limits may be insufficient for high-value assets. Umbrella policy recommended for liability protection.
+            </div>
+            <div class="card-for">
+                For: <strong>Tom Johnson</strong>
+            </div>
+            <button class="card-action" onclick="scheduleConsultation()">Schedule Consultation</button>
+        </div>
+
+        <!-- Recommendation Card -->
+        <div class="card recommendation">
+            <div class="card-header">Recommendation</div>
+            <div class="card-title">Policy Bundle Opportunity</div>
+            <div class="card-description">
+                Client has multiple policies with different carriers. Bundling home and auto could save 15-25% on premiums annually.
+            </div>
+            <div class="card-for">
+                For: <strong>Tom Johnson</strong>
+            </div>
+            <button class="card-action" onclick="sendEmail()">Send Email</button>
+        </div>
+    </div>
+
+    <script>
+        function createLead() {
+            alert('Creating life insurance lead for Kelly Johnson...');
+            // Add your insurance lead creation logic here
+        }
+
+        function scheduleConsultation() {
+            alert('Scheduling insurance review consultation for Tom Johnson...');
+            // Add your consultation scheduling logic here
+        }
+
+        function sendEmail() {
+            alert('Sending policy bundling proposal to Tom Johnson...');
+            // Add your email sending logic here
+        }
+    </script>
+</body>
+</html>
